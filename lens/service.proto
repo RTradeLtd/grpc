@@ -8,4 +8,4 @@ service IndexerAPI {
     rpc SubmitIndexRequest(request.IndexRequest) returns (response.IndexResponse) {}
     // SubmitSearchRequest is used to search the lens system
     rpc SubmitSearchRequest(request.SearchRequest) returns (response.SearchResponse) {}
-}  
+} 
