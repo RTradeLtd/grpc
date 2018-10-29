@@ -1,2 +1,3 @@
-# gapimit
-MIT Licensed files for Temporal GAPI (GRPC-API)
+# grpc
+
+Golang bindings and utilities for Temporal's gRPC services.
