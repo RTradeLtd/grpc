@@ -15,9 +15,6 @@ matrix:
         - git diff-index --quiet HEAD --
 
     - name: "Tests"
-      language: go
-      go:
-        - "1.11"
       install:
         - go get -u golang.org/x/lint/golint
         - curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
