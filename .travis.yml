@@ -2,22 +2,17 @@ language: go
 go:
   - "1.11"
 
-after_success:
-  - bash <(curl -s https://codecov.io/bash)
-
 matrix:
   include:
-    # - name: "Codegen Check"
-    #  install:
-    #    - bash .scripts/install-protoc.sh
-    #    - go get -u github.com/golang/protobuf/protoc-gen-go
-    #    - go get -u github.com/golang/mock/mockgen
-    #  script:
-    #    # generate code and exit with status 1 if diff is detected
-    #    - make proto
-    #    - git --no-pager diff
-    #    - git diff-index --quiet HEAD --
-    #  after_success: skip
+    - name: "Codegen Check"
+      install:
+        - bash .scripts/install-protoc.sh
+        - go get -u github.com/golang/protobuf/protoc-gen-go
+      script:
+        # generate code and exit with status 1 if diff is detected
+        - make proto
+        - git --no-pager diff
+        - git diff-index --quiet HEAD --
 
     - name: "Tests"
       language: go
@@ -34,6 +29,8 @@ matrix:
         - go fmt ./...
         - golint $(go list ./... | grep -v /vendor/) # golint doesn't ignore vendor
         - go test -race -timeout 5m -coverprofile=coverage.txt ./...
+      after_success:
+        - bash <(curl -s https://codecov.io/bash)
 
 notifications: 
   email: false 
