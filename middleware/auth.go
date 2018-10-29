@@ -11,8 +11,8 @@ import (
 // NewServerInterceptors creates unary and stream interceptors that validate
 // requests, for use with gRPC servers, using given key
 func NewServerInterceptors(key string) (
-	unaryInterceptor UnaryInterceptor,
-	streamInterceptor StreamInterceptor,
+	unaryInterceptor grpc.UnaryServerInterceptor,
+	streamInterceptor grpc.StreamServerInterceptor,
 ) {
 	unaryInterceptor = func(ctx context.Context, req interface{}, info *grpc.UnaryServerInfo, handler grpc.UnaryHandler) (interface{}, error) {
 		meta, ok := metadata.FromIncomingContext(ctx)
