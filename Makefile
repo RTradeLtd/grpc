@@ -35,8 +35,8 @@ proto:
 
 .PHONY: proto-service
 proto-service:
-	( cd $(PKG) ; protoc *.proto --go_out=. )
+	protoc -I $(PKG) service.proto --go_out=plugins=grpc:$(PKG)
 
 .PHONY: proto-pkg
 proto-pkg:
-	( cd $(PKG) ; protoc *.proto --go_out=plugins=grpc:$(GOPATH)/src )
+	protoc -I $(PKG) $(PKG)/*.proto --go_out=plugins=grpc:$(GOPATH)/src

@@ -1,5 +1,7 @@
 syntax = "proto3";
 
+package lens;
+
 import "request/request.proto";
 import "response/response.proto"; 
 
@@ -8,4 +10,4 @@ service IndexerAPI {
     rpc SubmitIndexRequest(request.IndexRequest) returns (response.IndexResponse) {}
     // SubmitSearchRequest is used to search the lens system
     rpc SubmitSearchRequest(request.SearchRequest) returns (response.SearchResponse) {}
-} 
+}
