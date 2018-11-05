@@ -33,6 +33,8 @@ proto:
 	make proto-pkg PKG=temporal/request
 	make proto-pkg PKG=temporal/response
 
+	make proto-service PKG=orchestrator
+
 .PHONY: proto-service
 proto-service:
 	protoc -I $(PKG) service.proto --go_out=plugins=grpc:$(PKG)
