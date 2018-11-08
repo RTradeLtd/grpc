@@ -33,7 +33,7 @@ proto:
 	make proto-pkg PKG=temporal/request
 	make proto-pkg PKG=temporal/response
 
-	make proto-service PKG=orchestrator
+	make proto-service PKG=ipfs-orchestrator
 
 .PHONY: proto-service
 proto-service:
