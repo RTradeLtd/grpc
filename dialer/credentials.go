@@ -1,8 +1,9 @@
-package utils
+package dialer
 
 import (
 	"context"
 
+	"github.com/RTradeLtd/grpc/middleware"
 	"google.golang.org/grpc/credentials"
 )
 
@@ -20,7 +21,7 @@ func NewCredentials(token string, withTransportSecurity bool) credentials.PerRPC
 // GetRequestMetadata retrieves relevant metadata
 func (c Credentials) GetRequestMetadata(ctx context.Context, uri ...string) (map[string]string, error) {
 	return map[string]string{
-		"authorization": c.token,
+		middleware.AuthorizationKey: c.token,
 	}, nil
 }
 
