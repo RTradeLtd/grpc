@@ -8,6 +8,9 @@ import (
 	"google.golang.org/grpc/metadata"
 )
 
+// AuthorizationKey is the key used to store authorization token data
+const AuthorizationKey = "authorization"
+
 // NewServerInterceptors creates unary and stream interceptors that validate
 // requests, for use with gRPC servers, using given key
 func NewServerInterceptors(key string) (
@@ -46,8 +49,8 @@ func NewServerInterceptors(key string) (
 }
 
 func validate(meta metadata.MD, key string) error {
-	keys, ok := meta["key"]
-	if !ok || len(meta["key"]) == 0 {
+	keys, ok := meta[AuthorizationKey]
+	if !ok || len(meta[AuthorizationKey]) == 0 {
 		return grpc.Errorf(codes.Unauthenticated, "no key provided")
 	}
 	if keys[0] != key {
