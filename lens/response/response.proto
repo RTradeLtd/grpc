@@ -1,7 +1,6 @@
 syntax = "proto3";
 
 package response;
-option go_package = "github.com/RTradeLtd/grpc/lens/response";
 
 message IndexResponse {
     // lensIdentifier is the identifier of the indexed object according to the lens system
@@ -12,9 +11,20 @@ message IndexResponse {
     bytes data = 3;
 }
 
-message SearchResponse {
+message SimpleSearchResponse {
     // name is the "name" of the object, such as an IPFS content hash
     repeated string names = 1;
     // objectType is the type of the object, such as IPLD
     string objectType = 2;
+}
+
+message AdvancedSearchResponse {
+    repeated object objects = 1;
+}
+
+message object {
+    string name = 1;
+    string mimeType = 2;
+    string category = 3;
+    string type = 4;
 }
