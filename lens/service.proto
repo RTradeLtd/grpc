@@ -1,7 +1,7 @@
 syntax = "proto3";
 
-import "request.proto";
-import "response.proto"; 
+import "request/request.proto";
+import "response/response.proto"; 
 
 service IndexerAPI {
     // SubmitIndexRequest is used to submit content to be indexed by the lens system
