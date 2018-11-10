@@ -9,7 +9,6 @@ import (
 	request "github.com/RTradeLtd/grpc/lens/request"
 	response "github.com/RTradeLtd/grpc/lens/response"
 	proto "github.com/golang/protobuf/proto"
-	context "golang.org/x/net/context"
 	grpc "google.golang.org/grpc"
 	math "math"
 )
