@@ -20,7 +20,7 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
 
-type IndexRequest struct {
+type Index struct {
 	// dataType is the "type" of data, such as IPLD
 	DataType string `protobuf:"bytes,1,opt,name=dataType,proto3" json:"dataType,omitempty"`
 	// objectIdentifier is the identifier of the object, such as an IPFS content hash
@@ -30,126 +30,127 @@ type IndexRequest struct {
 	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *IndexRequest) Reset()         { *m = IndexRequest{} }
-func (m *IndexRequest) String() string { return proto.CompactTextString(m) }
-func (*IndexRequest) ProtoMessage()    {}
-func (*IndexRequest) Descriptor() ([]byte, []int) {
+func (m *Index) Reset()         { *m = Index{} }
+func (m *Index) String() string { return proto.CompactTextString(m) }
+func (*Index) ProtoMessage()    {}
+func (*Index) Descriptor() ([]byte, []int) {
 	return fileDescriptor_7f73548e33e655fe, []int{0}
 }
 
-func (m *IndexRequest) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_IndexRequest.Unmarshal(m, b)
+func (m *Index) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_Index.Unmarshal(m, b)
 }
-func (m *IndexRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_IndexRequest.Marshal(b, m, deterministic)
+func (m *Index) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_Index.Marshal(b, m, deterministic)
 }
-func (m *IndexRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_IndexRequest.Merge(m, src)
+func (m *Index) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Index.Merge(m, src)
 }
-func (m *IndexRequest) XXX_Size() int {
-	return xxx_messageInfo_IndexRequest.Size(m)
+func (m *Index) XXX_Size() int {
+	return xxx_messageInfo_Index.Size(m)
 }
-func (m *IndexRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_IndexRequest.DiscardUnknown(m)
+func (m *Index) XXX_DiscardUnknown() {
+	xxx_messageInfo_Index.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_IndexRequest proto.InternalMessageInfo
+var xxx_messageInfo_Index proto.InternalMessageInfo
 
-func (m *IndexRequest) GetDataType() string {
+func (m *Index) GetDataType() string {
 	if m != nil {
 		return m.DataType
 	}
 	return ""
 }
 
-func (m *IndexRequest) GetObjectIdentifier() string {
+func (m *Index) GetObjectIdentifier() string {
 	if m != nil {
 		return m.ObjectIdentifier
 	}
 	return ""
 }
 
-type SimpleSearchRequest struct {
-	// repeated means there can be 0 or more "keywords"
-	Keywords             []string `protobuf:"bytes,1,rep,name=keywords,proto3" json:"keywords,omitempty"`
+type Search struct {
+	// keywords to search by
+	Keywords []string `protobuf:"bytes,1,rep,name=keywords,proto3" json:"keywords,omitempty"`
+	// options are used to configure the query
+	Options              *Options `protobuf:"bytes,2,opt,name=options,proto3" json:"options,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *SimpleSearchRequest) Reset()         { *m = SimpleSearchRequest{} }
-func (m *SimpleSearchRequest) String() string { return proto.CompactTextString(m) }
-func (*SimpleSearchRequest) ProtoMessage()    {}
-func (*SimpleSearchRequest) Descriptor() ([]byte, []int) {
+func (m *Search) Reset()         { *m = Search{} }
+func (m *Search) String() string { return proto.CompactTextString(m) }
+func (*Search) ProtoMessage()    {}
+func (*Search) Descriptor() ([]byte, []int) {
 	return fileDescriptor_7f73548e33e655fe, []int{1}
 }
 
-func (m *SimpleSearchRequest) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_SimpleSearchRequest.Unmarshal(m, b)
+func (m *Search) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_Search.Unmarshal(m, b)
 }
-func (m *SimpleSearchRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_SimpleSearchRequest.Marshal(b, m, deterministic)
+func (m *Search) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_Search.Marshal(b, m, deterministic)
 }
-func (m *SimpleSearchRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_SimpleSearchRequest.Merge(m, src)
+func (m *Search) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Search.Merge(m, src)
 }
-func (m *SimpleSearchRequest) XXX_Size() int {
-	return xxx_messageInfo_SimpleSearchRequest.Size(m)
+func (m *Search) XXX_Size() int {
+	return xxx_messageInfo_Search.Size(m)
 }
-func (m *SimpleSearchRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_SimpleSearchRequest.DiscardUnknown(m)
+func (m *Search) XXX_DiscardUnknown() {
+	xxx_messageInfo_Search.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_SimpleSearchRequest proto.InternalMessageInfo
+var xxx_messageInfo_Search proto.InternalMessageInfo
 
-func (m *SimpleSearchRequest) GetKeywords() []string {
+func (m *Search) GetKeywords() []string {
 	if m != nil {
 		return m.Keywords
 	}
 	return nil
 }
 
-type AdvancedSearchRequest struct {
-	Keywords             []string `protobuf:"bytes,1,rep,name=keywords,proto3" json:"keywords,omitempty"`
+func (m *Search) GetOptions() *Options {
+	if m != nil {
+		return m.Options
+	}
+	return nil
+}
+
+type Options struct {
 	Categories           []string `protobuf:"bytes,2,rep,name=categories,proto3" json:"categories,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *AdvancedSearchRequest) Reset()         { *m = AdvancedSearchRequest{} }
-func (m *AdvancedSearchRequest) String() string { return proto.CompactTextString(m) }
-func (*AdvancedSearchRequest) ProtoMessage()    {}
-func (*AdvancedSearchRequest) Descriptor() ([]byte, []int) {
+func (m *Options) Reset()         { *m = Options{} }
+func (m *Options) String() string { return proto.CompactTextString(m) }
+func (*Options) ProtoMessage()    {}
+func (*Options) Descriptor() ([]byte, []int) {
 	return fileDescriptor_7f73548e33e655fe, []int{2}
 }
 
-func (m *AdvancedSearchRequest) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_AdvancedSearchRequest.Unmarshal(m, b)
+func (m *Options) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_Options.Unmarshal(m, b)
 }
-func (m *AdvancedSearchRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_AdvancedSearchRequest.Marshal(b, m, deterministic)
+func (m *Options) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_Options.Marshal(b, m, deterministic)
 }
-func (m *AdvancedSearchRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_AdvancedSearchRequest.Merge(m, src)
+func (m *Options) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Options.Merge(m, src)
 }
-func (m *AdvancedSearchRequest) XXX_Size() int {
-	return xxx_messageInfo_AdvancedSearchRequest.Size(m)
+func (m *Options) XXX_Size() int {
+	return xxx_messageInfo_Options.Size(m)
 }
-func (m *AdvancedSearchRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_AdvancedSearchRequest.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_AdvancedSearchRequest proto.InternalMessageInfo
-
-func (m *AdvancedSearchRequest) GetKeywords() []string {
-	if m != nil {
-		return m.Keywords
-	}
-	return nil
+func (m *Options) XXX_DiscardUnknown() {
+	xxx_messageInfo_Options.DiscardUnknown(m)
 }
 
-func (m *AdvancedSearchRequest) GetCategories() []string {
+var xxx_messageInfo_Options proto.InternalMessageInfo
+
+func (m *Options) GetCategories() []string {
 	if m != nil {
 		return m.Categories
 	}
@@ -157,27 +158,27 @@ func (m *AdvancedSearchRequest) GetCategories() []string {
 }
 
 func init() {
-	proto.RegisterType((*IndexRequest)(nil), "request.IndexRequest")
-	proto.RegisterType((*SimpleSearchRequest)(nil), "request.SimpleSearchRequest")
-	proto.RegisterType((*AdvancedSearchRequest)(nil), "request.AdvancedSearchRequest")
+	proto.RegisterType((*Index)(nil), "request.Index")
+	proto.RegisterType((*Search)(nil), "request.Search")
+	proto.RegisterType((*Options)(nil), "request.Options")
 }
 
 func init() { proto.RegisterFile("request.proto", fileDescriptor_7f73548e33e655fe) }
 
 var fileDescriptor_7f73548e33e655fe = []byte{
-	// 212 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xe2, 0xe2, 0x2d, 0x4a, 0x2d, 0x2c,
-	0x4d, 0x2d, 0x2e, 0xd1, 0x2b, 0x28, 0xca, 0x2f, 0xc9, 0x17, 0x62, 0x87, 0x72, 0x95, 0xc2, 0xb8,
-	0x78, 0x3c, 0xf3, 0x52, 0x52, 0x2b, 0x82, 0x20, 0x7c, 0x21, 0x29, 0x2e, 0x8e, 0x94, 0xc4, 0x92,
-	0xc4, 0x90, 0xca, 0x82, 0x54, 0x09, 0x46, 0x05, 0x46, 0x0d, 0xce, 0x20, 0x38, 0x5f, 0x48, 0x8b,
-	0x4b, 0x20, 0x3f, 0x29, 0x2b, 0x35, 0xb9, 0xc4, 0x33, 0x25, 0x35, 0xaf, 0x24, 0x33, 0x2d, 0x33,
-	0xb5, 0x48, 0x82, 0x09, 0xac, 0x06, 0x43, 0x5c, 0xc9, 0x90, 0x4b, 0x38, 0x38, 0x33, 0xb7, 0x20,
-	0x27, 0x35, 0x38, 0x35, 0xb1, 0x28, 0x39, 0x03, 0xc9, 0xf8, 0xec, 0xd4, 0xca, 0xf2, 0xfc, 0xa2,
-	0x94, 0x62, 0x09, 0x46, 0x05, 0x66, 0x90, 0xf1, 0x30, 0xbe, 0x52, 0x30, 0x97, 0xa8, 0x63, 0x4a,
-	0x59, 0x62, 0x5e, 0x72, 0x6a, 0x0a, 0xd1, 0x9a, 0x84, 0xe4, 0xb8, 0xb8, 0x92, 0x13, 0x4b, 0x52,
-	0xd3, 0xf3, 0x8b, 0x32, 0x53, 0x8b, 0x25, 0x98, 0xc0, 0xb2, 0x48, 0x22, 0x4e, 0x1a, 0x51, 0x6a,
-	0xe9, 0x99, 0x25, 0x19, 0xa5, 0x49, 0x7a, 0xc9, 0xf9, 0xb9, 0xfa, 0x41, 0x21, 0x45, 0x89, 0x29,
-	0xa9, 0x3e, 0x25, 0x29, 0xfa, 0xe9, 0x45, 0x05, 0xc9, 0xfa, 0x39, 0xa9, 0x79, 0xc5, 0xfa, 0xd0,
-	0x90, 0x48, 0x62, 0x03, 0x87, 0x8c, 0x31, 0x20, 0x00, 0x00, 0xff, 0xff, 0xdb, 0xae, 0x66, 0xff,
-	0x2a, 0x01, 0x00, 0x00,
+	// 218 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x64, 0x90, 0x4d, 0x4b, 0xc3, 0x40,
+	0x10, 0x86, 0x89, 0x62, 0xa3, 0x23, 0x42, 0xd9, 0x53, 0xf0, 0x20, 0x25, 0x07, 0xa9, 0x3d, 0x24,
+	0xa0, 0xff, 0xc0, 0x5b, 0x41, 0xa8, 0xc4, 0x9e, 0xbc, 0x6d, 0x76, 0xc7, 0x74, 0xfd, 0xd8, 0x59,
+	0x67, 0xa7, 0x68, 0xfe, 0xbd, 0x6c, 0x4c, 0x44, 0xe8, 0xf1, 0x7d, 0x78, 0xe7, 0x99, 0x61, 0xe0,
+	0x82, 0xf1, 0x73, 0x8f, 0x51, 0xaa, 0xc0, 0x24, 0xa4, 0xf2, 0x31, 0x96, 0x1b, 0x38, 0x59, 0x7b,
+	0x8b, 0xdf, 0xea, 0x12, 0x4e, 0xad, 0x16, 0xbd, 0xed, 0x03, 0x16, 0xd9, 0x22, 0x5b, 0x9e, 0x35,
+	0x7f, 0x59, 0xad, 0x60, 0x4e, 0xed, 0x2b, 0x1a, 0x59, 0x5b, 0xf4, 0xe2, 0x5e, 0x1c, 0x72, 0x71,
+	0x34, 0x74, 0x0e, 0x78, 0xf9, 0x08, 0xb3, 0x27, 0xd4, 0x6c, 0x76, 0xc9, 0xf8, 0x86, 0xfd, 0x17,
+	0xb1, 0x8d, 0x45, 0xb6, 0x38, 0x4e, 0xc6, 0x29, 0xab, 0x15, 0xe4, 0x14, 0xc4, 0x91, 0x8f, 0x83,
+	0xe8, 0xfc, 0x76, 0x5e, 0x4d, 0x07, 0x6e, 0x7e, 0x79, 0x33, 0x15, 0xca, 0x1b, 0xc8, 0x47, 0xa6,
+	0xae, 0x00, 0x8c, 0x16, 0xec, 0x88, 0x1d, 0xa6, 0xc9, 0x24, 0xfd, 0x47, 0xee, 0x97, 0xcf, 0xd7,
+	0x9d, 0x93, 0xdd, 0xbe, 0xad, 0x0c, 0x7d, 0xd4, 0xcd, 0x96, 0xb5, 0xc5, 0x07, 0xb1, 0x75, 0xc7,
+	0xc1, 0xd4, 0xef, 0xe8, 0x63, 0x3d, 0x6e, 0x69, 0x67, 0xc3, 0x1f, 0xee, 0x7e, 0x02, 0x00, 0x00,
+	0xff, 0xff, 0xe4, 0xd0, 0x6a, 0x69, 0x18, 0x01, 0x00, 0x00,
 }
