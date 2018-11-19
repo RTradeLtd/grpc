@@ -20,10 +20,10 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
 
-type IndexResponse struct {
-	// lensIdentifier is the identifier of the indexed object according to the lens system
-	LensIdentifier string `protobuf:"bytes,1,opt,name=lensIdentifier,proto3" json:"lensIdentifier,omitempty"`
-	// keywords  are the keywords that you can use to search for this object within lens
+type Index struct {
+	// id is the identifier of the indexed object according to the lens system
+	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	// keywords are the keywords that you can use to search for this object within lens
 	Keywords []string `protobuf:"bytes,2,rep,name=keywords,proto3" json:"keywords,omitempty"`
 	// data is miscellaneous data associated with the response
 	Data                 []byte   `protobuf:"bytes,3,opt,name=data,proto3" json:"data,omitempty"`
@@ -32,121 +32,179 @@ type IndexResponse struct {
 	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *IndexResponse) Reset()         { *m = IndexResponse{} }
-func (m *IndexResponse) String() string { return proto.CompactTextString(m) }
-func (*IndexResponse) ProtoMessage()    {}
-func (*IndexResponse) Descriptor() ([]byte, []int) {
+func (m *Index) Reset()         { *m = Index{} }
+func (m *Index) String() string { return proto.CompactTextString(m) }
+func (*Index) ProtoMessage()    {}
+func (*Index) Descriptor() ([]byte, []int) {
 	return fileDescriptor_0fbc901015fa5021, []int{0}
 }
 
-func (m *IndexResponse) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_IndexResponse.Unmarshal(m, b)
+func (m *Index) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_Index.Unmarshal(m, b)
 }
-func (m *IndexResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_IndexResponse.Marshal(b, m, deterministic)
+func (m *Index) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_Index.Marshal(b, m, deterministic)
 }
-func (m *IndexResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_IndexResponse.Merge(m, src)
+func (m *Index) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Index.Merge(m, src)
 }
-func (m *IndexResponse) XXX_Size() int {
-	return xxx_messageInfo_IndexResponse.Size(m)
+func (m *Index) XXX_Size() int {
+	return xxx_messageInfo_Index.Size(m)
 }
-func (m *IndexResponse) XXX_DiscardUnknown() {
-	xxx_messageInfo_IndexResponse.DiscardUnknown(m)
+func (m *Index) XXX_DiscardUnknown() {
+	xxx_messageInfo_Index.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_IndexResponse proto.InternalMessageInfo
+var xxx_messageInfo_Index proto.InternalMessageInfo
 
-func (m *IndexResponse) GetLensIdentifier() string {
+func (m *Index) GetId() string {
 	if m != nil {
-		return m.LensIdentifier
+		return m.Id
 	}
 	return ""
 }
 
-func (m *IndexResponse) GetKeywords() []string {
+func (m *Index) GetKeywords() []string {
 	if m != nil {
 		return m.Keywords
 	}
 	return nil
 }
 
-func (m *IndexResponse) GetData() []byte {
+func (m *Index) GetData() []byte {
 	if m != nil {
 		return m.Data
 	}
 	return nil
 }
 
-type SearchResponse struct {
+type Results struct {
+	Objects              []*Object `protobuf:"bytes,1,rep,name=objects,proto3" json:"objects,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}  `json:"-"`
+	XXX_unrecognized     []byte    `json:"-"`
+	XXX_sizecache        int32     `json:"-"`
+}
+
+func (m *Results) Reset()         { *m = Results{} }
+func (m *Results) String() string { return proto.CompactTextString(m) }
+func (*Results) ProtoMessage()    {}
+func (*Results) Descriptor() ([]byte, []int) {
+	return fileDescriptor_0fbc901015fa5021, []int{1}
+}
+
+func (m *Results) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_Results.Unmarshal(m, b)
+}
+func (m *Results) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_Results.Marshal(b, m, deterministic)
+}
+func (m *Results) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Results.Merge(m, src)
+}
+func (m *Results) XXX_Size() int {
+	return xxx_messageInfo_Results.Size(m)
+}
+func (m *Results) XXX_DiscardUnknown() {
+	xxx_messageInfo_Results.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_Results proto.InternalMessageInfo
+
+func (m *Results) GetObjects() []*Object {
+	if m != nil {
+		return m.Objects
+	}
+	return nil
+}
+
+type Object struct {
 	// name is the "name" of the object, such as an IPFS content hash
-	Names []string `protobuf:"bytes,1,rep,name=names,proto3" json:"names,omitempty"`
-	// objectType is the type of the object, such as IPLD
-	ObjectType           string   `protobuf:"bytes,2,opt,name=objectType,proto3" json:"objectType,omitempty"`
+	Name     string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	MimeType string `protobuf:"bytes,2,opt,name=mimeType,proto3" json:"mimeType,omitempty"`
+	Category string `protobuf:"bytes,3,opt,name=category,proto3" json:"category,omitempty"`
+	// type is the type of the object, such as IPLD
+	Type                 string   `protobuf:"bytes,4,opt,name=type,proto3" json:"type,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *SearchResponse) Reset()         { *m = SearchResponse{} }
-func (m *SearchResponse) String() string { return proto.CompactTextString(m) }
-func (*SearchResponse) ProtoMessage()    {}
-func (*SearchResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_0fbc901015fa5021, []int{1}
+func (m *Object) Reset()         { *m = Object{} }
+func (m *Object) String() string { return proto.CompactTextString(m) }
+func (*Object) ProtoMessage()    {}
+func (*Object) Descriptor() ([]byte, []int) {
+	return fileDescriptor_0fbc901015fa5021, []int{2}
 }
 
-func (m *SearchResponse) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_SearchResponse.Unmarshal(m, b)
+func (m *Object) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_Object.Unmarshal(m, b)
 }
-func (m *SearchResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_SearchResponse.Marshal(b, m, deterministic)
+func (m *Object) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_Object.Marshal(b, m, deterministic)
 }
-func (m *SearchResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_SearchResponse.Merge(m, src)
+func (m *Object) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Object.Merge(m, src)
 }
-func (m *SearchResponse) XXX_Size() int {
-	return xxx_messageInfo_SearchResponse.Size(m)
+func (m *Object) XXX_Size() int {
+	return xxx_messageInfo_Object.Size(m)
 }
-func (m *SearchResponse) XXX_DiscardUnknown() {
-	xxx_messageInfo_SearchResponse.DiscardUnknown(m)
+func (m *Object) XXX_DiscardUnknown() {
+	xxx_messageInfo_Object.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_SearchResponse proto.InternalMessageInfo
+var xxx_messageInfo_Object proto.InternalMessageInfo
 
-func (m *SearchResponse) GetNames() []string {
+func (m *Object) GetName() string {
 	if m != nil {
-		return m.Names
+		return m.Name
 	}
-	return nil
+	return ""
 }
 
-func (m *SearchResponse) GetObjectType() string {
+func (m *Object) GetMimeType() string {
 	if m != nil {
-		return m.ObjectType
+		return m.MimeType
+	}
+	return ""
+}
+
+func (m *Object) GetCategory() string {
+	if m != nil {
+		return m.Category
+	}
+	return ""
+}
+
+func (m *Object) GetType() string {
+	if m != nil {
+		return m.Type
 	}
 	return ""
 }
 
 func init() {
-	proto.RegisterType((*IndexResponse)(nil), "response.IndexResponse")
-	proto.RegisterType((*SearchResponse)(nil), "response.SearchResponse")
+	proto.RegisterType((*Index)(nil), "response.Index")
+	proto.RegisterType((*Results)(nil), "response.Results")
+	proto.RegisterType((*Object)(nil), "response.Object")
 }
 
 func init() { proto.RegisterFile("response.proto", fileDescriptor_0fbc901015fa5021) }
 
 var fileDescriptor_0fbc901015fa5021 = []byte{
-	// 205 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x5c, 0x8f, 0xb1, 0x4a, 0xc6, 0x30,
-	0x14, 0x85, 0xc9, 0x5f, 0x95, 0xf6, 0xa2, 0x1d, 0x82, 0x43, 0x70, 0x90, 0xd2, 0x41, 0xeb, 0xd2,
-	0x0c, 0xbe, 0x81, 0x83, 0x50, 0x70, 0x8a, 0x9d, 0xdc, 0xd2, 0xe4, 0xda, 0x56, 0x6d, 0x12, 0x92,
-	0x88, 0xf6, 0xed, 0xc5, 0x68, 0x8b, 0xb8, 0xdd, 0xef, 0x83, 0xcb, 0x39, 0x07, 0x4a, 0x8f, 0xc1,
-	0x59, 0x13, 0xb0, 0x75, 0xde, 0x46, 0x4b, 0xf3, 0x8d, 0xeb, 0x11, 0xce, 0x3a, 0xa3, 0xf1, 0x53,
-	0xfc, 0x0a, 0x7a, 0x05, 0xe5, 0x1b, 0x9a, 0xd0, 0x69, 0x34, 0x71, 0x7e, 0x9e, 0xd1, 0x33, 0x52,
-	0x91, 0xa6, 0x10, 0xff, 0x2c, 0xbd, 0x80, 0xfc, 0x15, 0xd7, 0x0f, 0xeb, 0x75, 0x60, 0x87, 0x2a,
-	0x6b, 0x0a, 0xb1, 0x33, 0xa5, 0x70, 0xa4, 0x65, 0x94, 0x2c, 0xab, 0x48, 0x73, 0x2a, 0xd2, 0x5d,
-	0xdf, 0x43, 0xf9, 0x88, 0xd2, 0xab, 0x69, 0x4f, 0x3a, 0x87, 0x63, 0x23, 0x17, 0x0c, 0x8c, 0xa4,
-	0xf7, 0x1f, 0xa0, 0x97, 0x00, 0x76, 0x78, 0x41, 0x15, 0xfb, 0xd5, 0x21, 0x3b, 0xa4, 0xec, 0x3f,
-	0xe6, 0xee, 0xe6, 0xe9, 0x7a, 0x9c, 0xe3, 0xf4, 0x3e, 0xb4, 0xca, 0x2e, 0x5c, 0xf4, 0x5e, 0x6a,
-	0x7c, 0x88, 0x9a, 0x8f, 0xde, 0x29, 0xfe, 0xdd, 0x91, 0x6f, 0xdb, 0x86, 0x93, 0x34, 0xf6, 0xf6,
-	0x2b, 0x00, 0x00, 0xff, 0xff, 0xc8, 0x22, 0x11, 0x73, 0xfe, 0x00, 0x00, 0x00,
+	// 238 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x3c, 0x90, 0x41, 0x4b, 0xc3, 0x30,
+	0x14, 0xc7, 0x69, 0x3b, 0xb7, 0xf5, 0x29, 0x43, 0x72, 0x0a, 0x9e, 0x4a, 0x2f, 0x56, 0x0f, 0x2d,
+	0x28, 0x7e, 0x01, 0x2f, 0x22, 0x08, 0x42, 0xd8, 0xc9, 0x5b, 0xda, 0x3c, 0xba, 0xea, 0xda, 0x84,
+	0xe4, 0x0d, 0xed, 0xb7, 0x97, 0x64, 0x6b, 0x6e, 0xff, 0xdf, 0x7b, 0xc9, 0x3f, 0x3f, 0x02, 0x3b,
+	0x8b, 0xce, 0xe8, 0xc9, 0x61, 0x6d, 0xac, 0x26, 0xcd, 0xb6, 0x0b, 0x97, 0x6f, 0x70, 0xf5, 0x3e,
+	0x29, 0xfc, 0x63, 0x3b, 0x48, 0x07, 0xc5, 0x93, 0x22, 0xa9, 0x72, 0x91, 0x0e, 0x8a, 0xdd, 0xc1,
+	0xf6, 0x07, 0xe7, 0x5f, 0x6d, 0x95, 0xe3, 0x69, 0x91, 0x55, 0xb9, 0x88, 0xcc, 0x18, 0xac, 0x94,
+	0x24, 0xc9, 0xb3, 0x22, 0xa9, 0x6e, 0x44, 0xc8, 0xe5, 0x0b, 0x6c, 0x04, 0xba, 0xd3, 0x91, 0x1c,
+	0x7b, 0x84, 0x8d, 0x6e, 0xbf, 0xb1, 0x23, 0xc7, 0x93, 0x22, 0xab, 0xae, 0x9f, 0x6e, 0xeb, 0xf8,
+	0xfe, 0x67, 0x58, 0x88, 0xe5, 0x40, 0x79, 0x80, 0xf5, 0x79, 0xe4, 0x4b, 0x27, 0x39, 0xe2, 0x45,
+	0x21, 0x64, 0x2f, 0x31, 0x0e, 0x23, 0xee, 0x67, 0x83, 0x3c, 0x0d, 0xf3, 0xc8, 0x7e, 0xd7, 0x49,
+	0xc2, 0x5e, 0xdb, 0x39, 0x88, 0xe4, 0x22, 0xb2, 0xef, 0x22, 0x7f, 0x67, 0x75, 0xee, 0xf2, 0xf9,
+	0xf5, 0xe1, 0xeb, 0xbe, 0x1f, 0xe8, 0x70, 0x6a, 0xeb, 0x4e, 0x8f, 0x8d, 0xd8, 0x5b, 0xa9, 0xf0,
+	0x83, 0x54, 0xd3, 0x5b, 0xd3, 0x35, 0x47, 0x9c, 0x5c, 0xb3, 0x48, 0xb6, 0xeb, 0xf0, 0x4b, 0xcf,
+	0xff, 0x01, 0x00, 0x00, 0xff, 0xff, 0xcb, 0x9a, 0x88, 0xdb, 0x37, 0x01, 0x00, 0x00,
 }
