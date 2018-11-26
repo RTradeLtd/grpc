@@ -16,7 +16,7 @@ const (
 	testKeyName = "testkey"
 )
 
-func TestClient(t *testing.T) {
+func TestKrab(t *testing.T) {
 	cfg, err := config.LoadConfig(testCfgPath)
 	if err != nil {
 		t.Fatal(err)
