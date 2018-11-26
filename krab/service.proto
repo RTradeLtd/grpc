@@ -19,4 +19,5 @@ message KeyPut {
 
 message Response {
     string status = 1;
+    bytes privateKey = 2;
 }
