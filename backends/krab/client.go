@@ -56,4 +56,4 @@ func NewClient(opts config.Endpoints) (*Client, error) {
 }
 
 // Close shuts down the client's gRPC connection
-func (c *Client) Close() { c.conn.Close() }
+func (c *Client) Close() error { return c.conn.Close() }

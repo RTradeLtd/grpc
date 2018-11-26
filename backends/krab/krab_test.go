@@ -27,6 +27,11 @@ func TestKrab(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
+	defer func() {
+		if err := client.Close(); err != nil {
+			t.Fatal(err)
+		}
+	}()
 	// generate a private key to store
 	pk, _, err := ci.GenerateKeyPair(ci.Ed25519, 256)
 	if err != nil {
