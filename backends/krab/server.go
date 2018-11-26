@@ -78,7 +78,7 @@ func (s *Server) GetPrivateKey(ctx context.Context, req *pb.KeyGet) (*pb.Respons
 		return nil, err
 	}
 	return &pb.Response{
-		Status:     "get succesful",
+		Status:     "private key retrieved",
 		PrivateKey: keyBytes,
 	}, nil
 }
@@ -93,6 +93,6 @@ func (s *Server) PutPrivateKey(ctx context.Context, req *pb.KeyPut) (*pb.Respons
 		return nil, err
 	}
 	return &pb.Response{
-		Status: "key store",
+		Status: "private key stored",
 	}, nil
 }
