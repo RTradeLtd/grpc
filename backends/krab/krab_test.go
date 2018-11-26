@@ -2,7 +2,6 @@ package krab_test
 
 import (
 	"context"
-	"os"
 	"testing"
 
 	"github.com/RTradeLtd/config"
@@ -21,10 +20,6 @@ func TestKrab(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	// defer removal of the test keystore until test is over
-	defer func() {
-		os.RemoveAll(cfg.IPFS.KeystorePath)
-	}()
 	// create our server, and listen for connections
 	go krab.NewServer(cfg.Krab.URL, "tcp", cfg)
 	// create our client to connect to the server
