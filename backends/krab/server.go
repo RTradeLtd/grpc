@@ -3,6 +3,7 @@ package krab
 
 import (
 	"context"
+	"log"
 	"net"
 
 	"github.com/RTradeLtd/config"
@@ -19,7 +20,8 @@ import (
 
 // Server is the backend for Krab
 type Server struct {
-	krab *krab.Krab
+	krab   *krab.Krab
+	server *grpc.Server
 	pb.ServiceServer
 }
 
@@ -53,17 +55,22 @@ func NewServer(listenAddr, protocol string, cfg *config.TemporalConfig) error {
 	}
 	// create grpc server
 	gServer := grpc.NewServer(serverOpts...)
-	defer gServer.GracefulStop()
 	// setup krab backend
 	kb, err := krab.NewKrab(krab.Opts{Passphrase: cfg.Endpoints.Krab.KeystorePassword, DSPath: cfg.IPFS.KeystorePath, ReadOnly: false})
 	if err != nil {
 		return err
 	}
-	defer kb.Close()
 	server := &Server{
-		krab: kb,
+		krab:   kb,
+		server: gServer,
 	}
 	pb.RegisterServiceServer(gServer, server)
+	// defer closing of all services
+	defer func() {
+		if err := server.Close(); err != nil {
+			log.Fatal(err)
+		}
+	}()
 	return gServer.Serve(lis)
 }
 
@@ -95,4 +102,12 @@ func (s *Server) PutPrivateKey(ctx context.Context, req *pb.KeyPut) (*pb.Respons
 	return &pb.Response{
 		Status: "private key stored",
 	}, nil
+}
+
+// Close is used to gracefully stop any grpc connections, followed by closing the datastore
+func (s *Server) Close() error {
+	// gracefull store any pending connections first
+	s.server.GracefulStop()
+	// now close the datastore
+	return s.krab.Close()
 }
