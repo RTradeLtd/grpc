@@ -4,11 +4,12 @@
 package krab
 
 import (
+	context "context"
 	fmt "fmt"
-	proto "github.com/golang/protobuf/proto"
-	context "golang.org/x/net/context"
-	grpc "google.golang.org/grpc"
 	math "math"
+
+	proto "github.com/golang/protobuf/proto"
+	grpc "google.golang.org/grpc"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
