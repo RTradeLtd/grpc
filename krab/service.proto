@@ -3,13 +3,17 @@ syntax = "proto3";
 package krab;
 
 service Service {
-    rpc GetPrivateKey(Key) returns (Response) {}
-    rpc PutPrivateKey(Key) returns (Response) {}
+    rpc GetPrivateKey(KeyGet) returns (Response) {}
+    rpc PutPrivateKey(KeyPut) returns (Response) {}
 }
 
 message Empty{}
 
-message Key {
+message KeyGet {
+    string name = 1;
+}
+
+message KeyPut {
     bytes privateKey = 1;
 }
 
