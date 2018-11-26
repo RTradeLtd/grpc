@@ -287,7 +287,6 @@
     "github.com/grpc-ecosystem/go-grpc-middleware",
     "github.com/grpc-ecosystem/go-grpc-middleware/tags",
     "github.com/libp2p/go-libp2p-crypto",
-    "golang.org/x/net/context",
     "google.golang.org/grpc",
     "google.golang.org/grpc/codes",
     "google.golang.org/grpc/credentials",
