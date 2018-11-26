@@ -21,7 +21,11 @@ func TestKrab(t *testing.T) {
 		t.Fatal(err)
 	}
 	// create our server, and listen for connections
-	go krab.NewServer(cfg.Krab.URL, "tcp", cfg)
+	go func() {
+		if err := krab.NewServer(cfg.Krab.URL, "tcp", cfg); err != nil {
+			t.Fatal(err)
+		}
+	}()
 	// create our client to connect to the server
 	client, err := krab.NewClient(cfg.Endpoints)
 	if err != nil {
