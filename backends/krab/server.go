@@ -67,7 +67,7 @@ func NewServer(listenAddr, protocol string, cfg *config.TemporalConfig) error {
 	pb.RegisterServiceServer(gServer, server)
 	// defer closing of all services
 	defer func() {
-		if err := server.Close(); err != nil {
+		if err := server.close(); err != nil {
 			log.Fatal(err)
 		}
 	}()
@@ -105,7 +105,7 @@ func (s *Server) PutPrivateKey(ctx context.Context, req *pb.KeyPut) (*pb.Respons
 }
 
 // Close is used to gracefully stop any grpc connections, followed by closing the datastore
-func (s *Server) Close() error {
+func (s *Server) close() error {
 	// gracefull store any pending connections first
 	s.server.GracefulStop()
 	// now close the datastore
