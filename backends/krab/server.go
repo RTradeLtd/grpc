@@ -3,7 +3,6 @@ package krab
 
 import (
 	"context"
-	"fmt"
 	"net"
 
 	"github.com/RTradeLtd/config"
@@ -54,30 +53,22 @@ func NewServer(listenAddr, protocol string, cfg *config.TemporalConfig) error {
 	}
 	// create grpc server
 	gServer := grpc.NewServer(serverOpts...)
+	defer gServer.GracefulStop()
 	// setup krab backend
 	kb, err := krab.NewKrab(krab.Opts{Passphrase: cfg.Endpoints.Krab.KeystorePassword, DSPath: cfg.IPFS.KeystorePath, ReadOnly: false})
 	if err != nil {
 		return err
 	}
-	defer func() {
-		if err := kb.Close(); err != nil {
-			fmt.Println("failed to properly close datastore connection ", err.Error())
-		}
-	}()
+	defer kb.Close()
 	server := &Server{
 		krab: kb,
 	}
-	defer gServer.GracefulStop()
 	pb.RegisterServiceServer(gServer, server)
-	if err = gServer.Serve(lis); err != nil {
-		return err
-	}
-	// register gRPC services
-	return nil
+	return gServer.Serve(lis)
 }
 
-// KeyGet is used to retrieve a private key by searching for its name
-func (s *Server) KeyGet(ctx context.Context, req *pb.KeyGet) (*pb.Response, error) {
+// GetPrivateKey is used to retrieve a private key by searching for its name
+func (s *Server) GetPrivateKey(ctx context.Context, req *pb.KeyGet) (*pb.Response, error) {
 	pk, err := s.krab.Get(req.Name)
 	if err != nil {
 		return nil, err
@@ -92,8 +83,8 @@ func (s *Server) KeyGet(ctx context.Context, req *pb.KeyGet) (*pb.Response, erro
 	}, nil
 }
 
-// KeyPut is used to store a new private key
-func (s *Server) KeyPut(ctx context.Context, req *pb.KeyPut) (*pb.Response, error) {
+// PutPrivateKey is used to store a new private key
+func (s *Server) PutPrivateKey(ctx context.Context, req *pb.KeyPut) (*pb.Response, error) {
 	pk, err := ci.UnmarshalPrivateKey(req.PrivateKey)
 	if err != nil {
 		return nil, err

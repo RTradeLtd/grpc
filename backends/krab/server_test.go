@@ -4,11 +4,7 @@ import (
 	"testing"
 
 	"github.com/RTradeLtd/config"
-	"github.com/RTradeLtd/grpc/servers/krab"
-)
-
-const (
-	testCfgPath = "../../testenv/config.json"
+	"github.com/RTradeLtd/grpc/backends/krab"
 )
 
 func TestServer(t *testing.T) {
