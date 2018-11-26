@@ -34,12 +34,12 @@
   version = "v1.0.0"
 
 [[projects]]
+  branch = "master"
   digest = "1:c6a71244d012bfe0b0d383c62bde6679aa7dc26e62f548dfc6bee11a9bd2575c"
   name = "github.com/RTradeLtd/rtfs"
   packages = ["krab"]
   pruneopts = "UT"
   revision = "94f0159b7478db1207109fe8e0ca9cd4322b62a7"
-  version = "v0.3.5"
 
 [[projects]]
   branch = "master"
