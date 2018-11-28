@@ -34,10 +34,11 @@ proto:
 	make proto-pkg PKG=temporal/response
 
 	make proto-service PKG=ipfs-orchestrator
+	make proto-service PKG=krab
 
 .PHONY: proto-service
 proto-service:
-	protoc -I $(PKG) service.proto --go_out=plugins=grpc:$(PKG)
+	protoc -I $(PKG) $(PKG)/service.proto --go_out=plugins=grpc:$(PKG)
 
 .PHONY: proto-pkg
 proto-pkg:
