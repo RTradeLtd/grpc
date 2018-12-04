@@ -5,11 +5,11 @@ option go_package = "github.com/RTradeLtd/grpc/lens/request";
 
 message Index {
     // type is the "type" of data, such as IPLD
-    string type        = 1;
+    string type       = 1;
     // identifier is the identifier of the object, such as an IPFS content hash
-    string identifier  = 2;
+    string identifier = 2;
     // reindex indicates whether the object should be indexed again
-    bool   reindex     = 3;
+    bool reindex      = 3;
 }
 
 message Search {

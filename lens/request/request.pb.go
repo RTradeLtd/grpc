@@ -34,7 +34,7 @@ func (m *Index) Reset()         { *m = Index{} }
 func (m *Index) String() string { return proto.CompactTextString(m) }
 func (*Index) ProtoMessage()    {}
 func (*Index) Descriptor() ([]byte, []int) {
-	return fileDescriptor_request_c9af8c36324870e8, []int{0}
+	return fileDescriptor_request_1e02ad358f617e1e, []int{0}
 }
 func (m *Index) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Index.Unmarshal(m, b)
@@ -89,7 +89,7 @@ func (m *Search) Reset()         { *m = Search{} }
 func (m *Search) String() string { return proto.CompactTextString(m) }
 func (*Search) ProtoMessage()    {}
 func (*Search) Descriptor() ([]byte, []int) {
-	return fileDescriptor_request_c9af8c36324870e8, []int{1}
+	return fileDescriptor_request_1e02ad358f617e1e, []int{1}
 }
 func (m *Search) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Search.Unmarshal(m, b)
@@ -134,7 +134,7 @@ func (m *Options) Reset()         { *m = Options{} }
 func (m *Options) String() string { return proto.CompactTextString(m) }
 func (*Options) ProtoMessage()    {}
 func (*Options) Descriptor() ([]byte, []int) {
-	return fileDescriptor_request_c9af8c36324870e8, []int{2}
+	return fileDescriptor_request_1e02ad358f617e1e, []int{2}
 }
 func (m *Options) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Options.Unmarshal(m, b)
@@ -167,9 +167,9 @@ func init() {
 	proto.RegisterType((*Options)(nil), "request.Options")
 }
 
-func init() { proto.RegisterFile("request.proto", fileDescriptor_request_c9af8c36324870e8) }
+func init() { proto.RegisterFile("request.proto", fileDescriptor_request_1e02ad358f617e1e) }
 
-var fileDescriptor_request_c9af8c36324870e8 = []byte{
+var fileDescriptor_request_1e02ad358f617e1e = []byte{
 	// 224 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x4c, 0x90, 0x41, 0x4b, 0xc4, 0x30,
 	0x10, 0x85, 0xa9, 0xab, 0xdb, 0xdd, 0x11, 0x41, 0x72, 0x0a, 0x1e, 0xa4, 0xf4, 0x20, 0xd5, 0x43,
