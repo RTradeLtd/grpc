@@ -5,6 +5,7 @@ package ipfs_orchestrator;
 service Service {
   rpc Ping(Empty) returns (Empty) {};
   rpc StartNetwork(NetworkRequest) returns (StartNetworkResponse) {};
+  rpc UpdateNetwork(NetworkRequest) returns (Empty) {};
   rpc StopNetwork(NetworkRequest) returns (Empty) {};
   rpc RemoveNetwork(NetworkRequest) returns (Empty) {};
   rpc NetworkStats(NetworkRequest) returns (NetworkStatusReponse) {};
