@@ -33,7 +33,7 @@ func (m *Empty) Reset()         { *m = Empty{} }
 func (m *Empty) String() string { return proto.CompactTextString(m) }
 func (*Empty) ProtoMessage()    {}
 func (*Empty) Descriptor() ([]byte, []int) {
-	return fileDescriptor_service_1479e68a35463e14, []int{0}
+	return fileDescriptor_service_9dfa08f491c03c5a, []int{0}
 }
 func (m *Empty) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Empty.Unmarshal(m, b)
@@ -64,7 +64,7 @@ func (m *NetworkRequest) Reset()         { *m = NetworkRequest{} }
 func (m *NetworkRequest) String() string { return proto.CompactTextString(m) }
 func (*NetworkRequest) ProtoMessage()    {}
 func (*NetworkRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_service_1479e68a35463e14, []int{1}
+	return fileDescriptor_service_9dfa08f491c03c5a, []int{1}
 }
 func (m *NetworkRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_NetworkRequest.Unmarshal(m, b)
@@ -103,7 +103,7 @@ func (m *StartNetworkResponse) Reset()         { *m = StartNetworkResponse{} }
 func (m *StartNetworkResponse) String() string { return proto.CompactTextString(m) }
 func (*StartNetworkResponse) ProtoMessage()    {}
 func (*StartNetworkResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_service_1479e68a35463e14, []int{2}
+	return fileDescriptor_service_9dfa08f491c03c5a, []int{2}
 }
 func (m *StartNetworkResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_StartNetworkResponse.Unmarshal(m, b)
@@ -152,7 +152,7 @@ func (m *NetworkStatusReponse) Reset()         { *m = NetworkStatusReponse{} }
 func (m *NetworkStatusReponse) String() string { return proto.CompactTextString(m) }
 func (*NetworkStatusReponse) ProtoMessage()    {}
 func (*NetworkStatusReponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_service_1479e68a35463e14, []int{3}
+	return fileDescriptor_service_9dfa08f491c03c5a, []int{3}
 }
 func (m *NetworkStatusReponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_NetworkStatusReponse.Unmarshal(m, b)
@@ -451,9 +451,9 @@ var _Service_serviceDesc = grpc.ServiceDesc{
 	Metadata: "service.proto",
 }
 
-func init() { proto.RegisterFile("service.proto", fileDescriptor_service_1479e68a35463e14) }
+func init() { proto.RegisterFile("service.proto", fileDescriptor_service_9dfa08f491c03c5a) }
 
-var fileDescriptor_service_1479e68a35463e14 = []byte{
+var fileDescriptor_service_9dfa08f491c03c5a = []byte{
 	// 330 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xac, 0x93, 0x4f, 0x4f, 0xf2, 0x40,
 	0x10, 0xc6, 0x29, 0xe5, 0xcf, 0xcb, 0xbc, 0x60, 0x74, 0x43, 0xcc, 0x06, 0x63, 0x82, 0x7b, 0x91,
