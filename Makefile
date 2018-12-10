@@ -10,6 +10,7 @@ check:
 .PHONY: deps
 deps:
 	dep ensure
+	bash .scripts/install-go-gen.sh
 
 # Execute tests
 .PHONY: test
