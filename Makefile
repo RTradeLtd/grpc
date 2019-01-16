@@ -30,9 +30,9 @@ proto:
 	make proto-pkg PKG=lens/request
 	make proto-pkg PKG=lens/response
 
-	make proto-service PKG=temporal
-	make proto-pkg PKG=temporal/request
-	make proto-pkg PKG=temporal/response
+	make proto-service PKG=pay
+	make proto-pkg PKG=pay/request
+	make proto-pkg PKG=pay/response
 
 	make proto-service PKG=nexus
 
