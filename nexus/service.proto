@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package ipfs_orchestrator;
+package nexus;
 
 service Service {
   rpc Ping(Empty)                         returns (Empty) {};
