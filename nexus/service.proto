@@ -19,13 +19,15 @@ message NetworkRequest {
 }
 
 message StartNetworkResponse {
+  string swarm_port = 1;
   string swarm_key = 2;
 }
 
 message NetworkStatusReponse {
-  string network   = 1;
-  int64 uptime     = 2;
-  int64 disk_usage = 3;
+  string network    = 1;
+  string swarm_port = 2;
+  int64 uptime      = 3;
+  int64 disk_usage  = 4;
 }
 
 message NetworkDiagnosticsResponse {
