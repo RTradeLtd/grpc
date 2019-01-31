@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+service LensV2 {
+  // Index is used to submit content to be indexed by the lens system
+  rpc Index(IndexReq)   returns (IndexResp) {}
+  // Search is used to perform a configurable search against the Lens index
+  rpc Search(SearchReq) returns (SearchResp) {}
+}
+
+message IndexReq {
+  enum Type {
+    UNKNOWN = 0;
+    IPLD    = 1;
+  }
+  Type type = 1;
+
+  string hash          = 2;
+  string display_name  = 3;
+  repeated string tags = 4;
+
+  message Options {
+    bool reindex = 1;
+  }
+  Options options = 5;
+}
+
+message IndexResp { }
+
+message SearchReq {
+
+}
+
+message SearchResp {
+  
+}
