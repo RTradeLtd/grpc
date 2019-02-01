@@ -43,7 +43,7 @@ func (x IndexReq_Type) String() string {
 	return proto.EnumName(IndexReq_Type_name, int32(x))
 }
 func (IndexReq_Type) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_service_55e4543845211ab2, []int{0, 0}
+	return fileDescriptor_service_187981c3aceb4f84, []int{0, 0}
 }
 
 type IndexReq struct {
@@ -61,7 +61,7 @@ func (m *IndexReq) Reset()         { *m = IndexReq{} }
 func (m *IndexReq) String() string { return proto.CompactTextString(m) }
 func (*IndexReq) ProtoMessage()    {}
 func (*IndexReq) Descriptor() ([]byte, []int) {
-	return fileDescriptor_service_55e4543845211ab2, []int{0}
+	return fileDescriptor_service_187981c3aceb4f84, []int{0}
 }
 func (m *IndexReq) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_IndexReq.Unmarshal(m, b)
@@ -127,7 +127,7 @@ func (m *IndexReq_Options) Reset()         { *m = IndexReq_Options{} }
 func (m *IndexReq_Options) String() string { return proto.CompactTextString(m) }
 func (*IndexReq_Options) ProtoMessage()    {}
 func (*IndexReq_Options) Descriptor() ([]byte, []int) {
-	return fileDescriptor_service_55e4543845211ab2, []int{0, 0}
+	return fileDescriptor_service_187981c3aceb4f84, []int{0, 0}
 }
 func (m *IndexReq_Options) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_IndexReq_Options.Unmarshal(m, b)
@@ -164,7 +164,7 @@ func (m *IndexResp) Reset()         { *m = IndexResp{} }
 func (m *IndexResp) String() string { return proto.CompactTextString(m) }
 func (*IndexResp) ProtoMessage()    {}
 func (*IndexResp) Descriptor() ([]byte, []int) {
-	return fileDescriptor_service_55e4543845211ab2, []int{1}
+	return fileDescriptor_service_187981c3aceb4f84, []int{1}
 }
 func (m *IndexResp) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_IndexResp.Unmarshal(m, b)
@@ -194,7 +194,7 @@ func (m *SearchReq) Reset()         { *m = SearchReq{} }
 func (m *SearchReq) String() string { return proto.CompactTextString(m) }
 func (*SearchReq) ProtoMessage()    {}
 func (*SearchReq) Descriptor() ([]byte, []int) {
-	return fileDescriptor_service_55e4543845211ab2, []int{2}
+	return fileDescriptor_service_187981c3aceb4f84, []int{2}
 }
 func (m *SearchReq) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SearchReq.Unmarshal(m, b)
@@ -224,7 +224,7 @@ func (m *SearchResp) Reset()         { *m = SearchResp{} }
 func (m *SearchResp) String() string { return proto.CompactTextString(m) }
 func (*SearchResp) ProtoMessage()    {}
 func (*SearchResp) Descriptor() ([]byte, []int) {
-	return fileDescriptor_service_55e4543845211ab2, []int{3}
+	return fileDescriptor_service_187981c3aceb4f84, []int{3}
 }
 func (m *SearchResp) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SearchResp.Unmarshal(m, b)
@@ -244,12 +244,82 @@ func (m *SearchResp) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_SearchResp proto.InternalMessageInfo
 
+type RemoveReq struct {
+	Hash                 string   `protobuf:"bytes,1,opt,name=hash,proto3" json:"hash,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *RemoveReq) Reset()         { *m = RemoveReq{} }
+func (m *RemoveReq) String() string { return proto.CompactTextString(m) }
+func (*RemoveReq) ProtoMessage()    {}
+func (*RemoveReq) Descriptor() ([]byte, []int) {
+	return fileDescriptor_service_187981c3aceb4f84, []int{4}
+}
+func (m *RemoveReq) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_RemoveReq.Unmarshal(m, b)
+}
+func (m *RemoveReq) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_RemoveReq.Marshal(b, m, deterministic)
+}
+func (dst *RemoveReq) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_RemoveReq.Merge(dst, src)
+}
+func (m *RemoveReq) XXX_Size() int {
+	return xxx_messageInfo_RemoveReq.Size(m)
+}
+func (m *RemoveReq) XXX_DiscardUnknown() {
+	xxx_messageInfo_RemoveReq.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_RemoveReq proto.InternalMessageInfo
+
+func (m *RemoveReq) GetHash() string {
+	if m != nil {
+		return m.Hash
+	}
+	return ""
+}
+
+type RemoveResp struct {
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *RemoveResp) Reset()         { *m = RemoveResp{} }
+func (m *RemoveResp) String() string { return proto.CompactTextString(m) }
+func (*RemoveResp) ProtoMessage()    {}
+func (*RemoveResp) Descriptor() ([]byte, []int) {
+	return fileDescriptor_service_187981c3aceb4f84, []int{5}
+}
+func (m *RemoveResp) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_RemoveResp.Unmarshal(m, b)
+}
+func (m *RemoveResp) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_RemoveResp.Marshal(b, m, deterministic)
+}
+func (dst *RemoveResp) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_RemoveResp.Merge(dst, src)
+}
+func (m *RemoveResp) XXX_Size() int {
+	return xxx_messageInfo_RemoveResp.Size(m)
+}
+func (m *RemoveResp) XXX_DiscardUnknown() {
+	xxx_messageInfo_RemoveResp.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_RemoveResp proto.InternalMessageInfo
+
 func init() {
 	proto.RegisterType((*IndexReq)(nil), "IndexReq")
 	proto.RegisterType((*IndexReq_Options)(nil), "IndexReq.Options")
 	proto.RegisterType((*IndexResp)(nil), "IndexResp")
 	proto.RegisterType((*SearchReq)(nil), "SearchReq")
 	proto.RegisterType((*SearchResp)(nil), "SearchResp")
+	proto.RegisterType((*RemoveReq)(nil), "RemoveReq")
+	proto.RegisterType((*RemoveResp)(nil), "RemoveResp")
 	proto.RegisterEnum("IndexReq_Type", IndexReq_Type_name, IndexReq_Type_value)
 }
 
@@ -265,10 +335,9 @@ const _ = grpc.SupportPackageIsVersion4
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type LensV2Client interface {
-	// Index is used to submit content to be indexed by the lens system
 	Index(ctx context.Context, in *IndexReq, opts ...grpc.CallOption) (*IndexResp, error)
-	// Search is used to perform a configurable search against the Lens index
 	Search(ctx context.Context, in *SearchReq, opts ...grpc.CallOption) (*SearchResp, error)
+	Remove(ctx context.Context, in *RemoveReq, opts ...grpc.CallOption) (*RemoveResp, error)
 }
 
 type lensV2Client struct {
@@ -297,12 +366,20 @@ func (c *lensV2Client) Search(ctx context.Context, in *SearchReq, opts ...grpc.C
 	return out, nil
 }
 
+func (c *lensV2Client) Remove(ctx context.Context, in *RemoveReq, opts ...grpc.CallOption) (*RemoveResp, error) {
+	out := new(RemoveResp)
+	err := c.cc.Invoke(ctx, "/LensV2/Remove", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // LensV2Server is the server API for LensV2 service.
 type LensV2Server interface {
-	// Index is used to submit content to be indexed by the lens system
 	Index(context.Context, *IndexReq) (*IndexResp, error)
-	// Search is used to perform a configurable search against the Lens index
 	Search(context.Context, *SearchReq) (*SearchResp, error)
+	Remove(context.Context, *RemoveReq) (*RemoveResp, error)
 }
 
 func RegisterLensV2Server(s *grpc.Server, srv LensV2Server) {
@@ -345,6 +422,24 @@ func _LensV2_Search_Handler(srv interface{}, ctx context.Context, dec func(inter
 	return interceptor(ctx, in, info, handler)
 }
 
+func _LensV2_Remove_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RemoveReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(LensV2Server).Remove(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/LensV2/Remove",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(LensV2Server).Remove(ctx, req.(*RemoveReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 var _LensV2_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "LensV2",
 	HandlerType: (*LensV2Server)(nil),
@@ -357,31 +452,37 @@ var _LensV2_serviceDesc = grpc.ServiceDesc{
 			MethodName: "Search",
 			Handler:    _LensV2_Search_Handler,
 		},
+		{
+			MethodName: "Remove",
+			Handler:    _LensV2_Remove_Handler,
+		},
 	},
 	Streams:  []grpc.StreamDesc{},
 	Metadata: "service.proto",
 }
 
-func init() { proto.RegisterFile("service.proto", fileDescriptor_service_55e4543845211ab2) }
+func init() { proto.RegisterFile("service.proto", fileDescriptor_service_187981c3aceb4f84) }
 
-var fileDescriptor_service_55e4543845211ab2 = []byte{
-	// 274 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x44, 0x50, 0xcb, 0x6a, 0xeb, 0x30,
-	0x10, 0x8d, 0x6e, 0x1c, 0x3f, 0xc6, 0xb9, 0x21, 0x9d, 0x95, 0x30, 0x14, 0x5c, 0x65, 0x63, 0x28,
-	0x68, 0xe1, 0xfe, 0x42, 0x37, 0xa1, 0xc1, 0x2e, 0xea, 0x6b, 0x59, 0xd4, 0x44, 0xd4, 0x86, 0xc6,
-	0x56, 0x2c, 0x53, 0xea, 0x5f, 0xee, 0x57, 0x14, 0x2b, 0x76, 0xbc, 0x9b, 0x33, 0x67, 0xce, 0x83,
-	0x81, 0xff, 0x46, 0x35, 0xdf, 0xe5, 0x5e, 0x71, 0xdd, 0xd4, 0x6d, 0xcd, 0x7e, 0x09, 0xf8, 0xdb,
-	0xea, 0xa0, 0x7e, 0x84, 0x3a, 0x21, 0x03, 0xa7, 0xed, 0xb4, 0xa2, 0x24, 0x26, 0xc9, 0x2a, 0x5d,
-	0xf1, 0x91, 0xe0, 0xcf, 0x9d, 0x56, 0xc2, 0x72, 0x88, 0xe0, 0x14, 0xd2, 0x14, 0xf4, 0x5f, 0x4c,
-	0x92, 0x40, 0xd8, 0x19, 0x6f, 0x60, 0x79, 0x28, 0x8d, 0xfe, 0x92, 0xdd, 0x7b, 0x25, 0x8f, 0x8a,
-	0xce, 0x2d, 0x17, 0x0e, 0xbb, 0x4c, 0x1e, 0xad, 0xac, 0x95, 0x9f, 0x86, 0x3a, 0xf1, 0xbc, 0x97,
-	0xf5, 0x33, 0xde, 0x82, 0x57, 0xeb, 0xb6, 0xac, 0x2b, 0x43, 0x17, 0x31, 0x49, 0xc2, 0xf4, 0x6a,
-	0x4a, 0xcc, 0xcf, 0x84, 0x18, 0x2f, 0xa2, 0x0d, 0x78, 0xc3, 0x0e, 0x29, 0x78, 0x8d, 0x2a, 0xfb,
-	0x4b, 0xdb, 0xd4, 0x17, 0x23, 0x64, 0xd7, 0xe0, 0xf4, 0x55, 0x31, 0x04, 0xef, 0x25, 0x7b, 0xc8,
-	0xf2, 0xb7, 0x6c, 0x3d, 0x43, 0x1f, 0x9c, 0xed, 0xe3, 0xee, 0x7e, 0x4d, 0x58, 0x08, 0xc1, 0x10,
-	0x60, 0x74, 0x0f, 0x9e, 0x94, 0x6c, 0xf6, 0x85, 0x50, 0x27, 0xb6, 0x04, 0x18, 0x81, 0xd1, 0x69,
-	0x0e, 0xee, 0x4e, 0x55, 0xe6, 0x35, 0xc5, 0x18, 0x16, 0x56, 0x81, 0xc1, 0xa5, 0x5a, 0x04, 0x7c,
-	0x32, 0x99, 0xe1, 0x06, 0xdc, 0xb3, 0x12, 0x81, 0x5f, 0xfc, 0xa2, 0x90, 0x4f, 0x76, 0x6c, 0xf6,
-	0xe1, 0xda, 0x67, 0xdf, 0xfd, 0x05, 0x00, 0x00, 0xff, 0xff, 0xd0, 0x09, 0xae, 0x33, 0x7d, 0x01,
+var fileDescriptor_service_187981c3aceb4f84 = []byte{
+	// 306 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x4c, 0x91, 0xcf, 0x4e, 0xc2, 0x40,
+	0x10, 0xc6, 0x59, 0x29, 0x94, 0x4e, 0x91, 0xe0, 0x9c, 0x9a, 0x26, 0xc6, 0xba, 0x5c, 0x48, 0x4c,
+	0xf6, 0x50, 0x5f, 0xc1, 0x0b, 0x91, 0x14, 0xb3, 0xfe, 0x3b, 0x9a, 0x0a, 0x13, 0x69, 0x22, 0xed,
+	0xd2, 0x6d, 0x88, 0xbc, 0xb2, 0x4f, 0x61, 0x76, 0x61, 0x5b, 0x6f, 0x33, 0xf3, 0x7d, 0xd3, 0xdf,
+	0x7c, 0x5d, 0xb8, 0xd4, 0x54, 0x1f, 0x8a, 0x35, 0x09, 0x55, 0x57, 0x4d, 0xc5, 0x7f, 0x19, 0x8c,
+	0x16, 0xe5, 0x86, 0x7e, 0x24, 0xed, 0x91, 0x83, 0xd7, 0x1c, 0x15, 0x45, 0x2c, 0x61, 0xf3, 0x49,
+	0x3a, 0x11, 0x4e, 0x10, 0x2f, 0x47, 0x45, 0xd2, 0x6a, 0x88, 0xe0, 0x6d, 0x73, 0xbd, 0x8d, 0x2e,
+	0x12, 0x36, 0x0f, 0xa4, 0xad, 0xf1, 0x16, 0xc6, 0x9b, 0x42, 0xab, 0xef, 0xfc, 0xf8, 0x51, 0xe6,
+	0x3b, 0x8a, 0xfa, 0x56, 0x0b, 0xcf, 0xb3, 0x2c, 0xdf, 0xd9, 0xb5, 0x26, 0xff, 0xd2, 0x91, 0x97,
+	0xf4, 0xcd, 0x9a, 0xa9, 0xf1, 0x0e, 0xfc, 0x4a, 0x35, 0x45, 0x55, 0xea, 0x68, 0x90, 0xb0, 0x79,
+	0x98, 0x5e, 0x75, 0xc4, 0xd5, 0x49, 0x90, 0xce, 0x11, 0xcf, 0xc0, 0x3f, 0xcf, 0x30, 0x02, 0xbf,
+	0xa6, 0xc2, 0x38, 0xed, 0xa5, 0x23, 0xe9, 0x5a, 0x7e, 0x0d, 0x9e, 0x39, 0x15, 0x43, 0xf0, 0x5f,
+	0xb3, 0xc7, 0x6c, 0xf5, 0x9e, 0x4d, 0x7b, 0x38, 0x02, 0x6f, 0xf1, 0xb4, 0x7c, 0x98, 0x32, 0x1e,
+	0x42, 0x70, 0x06, 0x68, 0x65, 0x9a, 0x67, 0xca, 0xeb, 0xf5, 0x56, 0xd2, 0x9e, 0x8f, 0x01, 0x5c,
+	0xa3, 0x15, 0xbf, 0x81, 0x40, 0xd2, 0xae, 0x3a, 0x90, 0xf9, 0x29, 0x2e, 0x30, 0xeb, 0x02, 0x1b,
+	0xbb, 0x33, 0x68, 0x95, 0x36, 0x30, 0x5c, 0x52, 0xa9, 0xdf, 0x52, 0x4c, 0x60, 0x60, 0x01, 0x18,
+	0xb4, 0x49, 0x62, 0x10, 0x1d, 0xb3, 0x87, 0x33, 0x18, 0x9e, 0x40, 0x08, 0xa2, 0xc5, 0xc7, 0xa1,
+	0xf8, 0x47, 0xb7, 0xa6, 0xd3, 0xe7, 0x11, 0x44, 0x7b, 0x48, 0x1c, 0x8a, 0x8e, 0xc9, 0x7b, 0x9f,
+	0x43, 0xfb, 0x80, 0xf7, 0x7f, 0x01, 0x00, 0x00, 0xff, 0xff, 0x3b, 0x28, 0xbf, 0x3f, 0xd1, 0x01,
 	0x00, 0x00,
 }

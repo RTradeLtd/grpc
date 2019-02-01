@@ -1,11 +1,12 @@
 syntax = "proto3";
 
 service LensV2 {
-  // Index is used to submit content to be indexed by the lens system
-  rpc Index(IndexReq)   returns (IndexResp) {}
-  // Search is used to perform a configurable search against the Lens index
+  rpc Index(IndexReq)   returns (IndexResp)  {}
   rpc Search(SearchReq) returns (SearchResp) {}
+  rpc Remove(RemoveReq) returns (RemoveResp) {}
 }
+
+// INDEX
 
 message IndexReq {
   enum Type {
@@ -26,10 +27,20 @@ message IndexReq {
 
 message IndexResp { }
 
+// SEARCH
+
 message SearchReq {
 
 }
 
 message SearchResp {
-  
+
 }
+
+// REMOVE
+
+message RemoveReq {
+  string hash = 1;
+}
+
+message RemoveResp {}
