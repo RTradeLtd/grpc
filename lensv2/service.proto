@@ -1,5 +1,7 @@
 syntax = "proto3";
 
+package lensv2;
+
 service LensV2 {
   rpc Index(IndexReq)   returns (IndexResp)  {}
   rpc Search(SearchReq) returns (SearchResp) {}
