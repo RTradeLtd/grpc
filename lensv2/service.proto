@@ -32,7 +32,16 @@ message IndexResp { }
 // SEARCH
 
 message SearchReq {
+  string query       = 1;
+  SearchOpts options = 2;
+}
 
+message SearchOpts {
+  repeated string required   = 1;
+  repeated string tags       = 2;
+  repeated string categories = 3;
+  repeated string mime_types = 4;
+  repeated string hashes     = 5;
 }
 
 message SearchResp {
