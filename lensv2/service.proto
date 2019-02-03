@@ -45,7 +45,19 @@ message SearchOpts {
 }
 
 message SearchResp {
+  message Result {
+    float score  = 1;
+    Document doc = 2;
+  }
+  repeated Result results = 1;
+}
 
+message Document {
+  string hash          = 1;
+  string display_name  = 2;
+  string mime_type     = 3;
+  string category      = 4;
+  repeated string tags = 5;
 }
 
 // REMOVE
