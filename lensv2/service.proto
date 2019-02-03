@@ -27,7 +27,9 @@ message IndexReq {
   Options options = 5;
 }
 
-message IndexResp { }
+message IndexResp {
+  Document doc = 1;
+}
 
 // SEARCH
 
