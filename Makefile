@@ -38,6 +38,8 @@ proto:
 
 	make proto-service PKG=krab
 
+	make proto-service PKG=lensv2
+
 .PHONY: proto-service
 proto-service:
 	protoc -I $(PKG) $(PKG)/service.proto --go_out=plugins=grpc:$(PKG)
