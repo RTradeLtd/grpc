@@ -6,6 +6,7 @@ Golang bindings and utilities for RTrade's gRPC services:
 - [package lensv2](https://godoc.org/github.com/RTradeLtd/grpc/lensv2) for version 2 of the [Lens](https://github.com/RTradeLtd/Lens) service
 - [package nexus](https://godoc.org/github.com/RTradeLtd/grpc/nexus) for the [Nexus](https://github.com/RTradeLtd/Nexus) daemon
 - [package pay](https://godoc.org/github.com/RTradeLtd/grpc/pay) for the [Pay](https://github.com/RTradeLtd/Pay) service
+- [package krab](https://godoc.org/github.com/RTradeLtd/grpc/krab) for [KAAS](https://github.com/RTradeLtd/kaas)
 
 This project also provides a few utility packages:
 
