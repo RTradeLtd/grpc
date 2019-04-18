@@ -9,7 +9,7 @@ check:
 # Install dependencies
 .PHONY: deps
 deps:
-	dep ensure
+	GO111MODULE=on go mod vendor
 	bash .scripts/install-go-gen.sh
 
 # Execute tests
