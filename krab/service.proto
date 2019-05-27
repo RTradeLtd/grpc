@@ -3,9 +3,11 @@ syntax = "proto3";
 package krab;
 
 service Service {
+    rpc HasPrivateKey(KeyGet) returns (Response) {}
     rpc GetPrivateKey(KeyGet) returns (Response) {}
     rpc PutPrivateKey(KeyPut) returns (Response) {}
     rpc DeletePrivateKey(KeyDelete) returns (Response) {}
+    rpc ListPrivateKeys(Empty) returns (Response) {}
 }
 
 message Empty{}
@@ -26,4 +28,5 @@ message KeyDelete {
 message Response {
     string status = 1;
     bytes privateKey = 2;
+    repeated string keyIDs = 3;
 }
