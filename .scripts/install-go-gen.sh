@@ -5,7 +5,7 @@
 
 VERSION=$1
 if [ -z "$1" ] ; then
-  VERSION=v1.2.0
+  VERSION=v1.3.1
 fi
 
 go get -u github.com/golang/protobuf/protoc-gen-go
