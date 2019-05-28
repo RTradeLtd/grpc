@@ -7,7 +7,7 @@ service Service {
     rpc GetPrivateKey(KeyGet) returns (Response) {}
     rpc PutPrivateKey(KeyPut) returns (Response) {}
     rpc DeletePrivateKey(KeyDelete) returns (Response) {}
-    rpc ListPrivateKeys(Empty) returns (Response) {}
+    rpc ListPrivateKeys(KeyList) returns (Response) {}
 }
 
 message Empty{}
@@ -23,6 +23,10 @@ message KeyPut {
 
 message KeyDelete {
     string name = 1;
+}
+
+message KeyList {
+    int64 limit = 1;
 }
 
 message Response {
