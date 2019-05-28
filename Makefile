@@ -46,4 +46,4 @@ proto-service:
 
 .PHONY: proto-pkg
 proto-pkg:
-	protoc -I $(PKG) $(PKG)/*.proto --go_out=plugins=grpc:$(GOPATH)/src
+	protoc -I $(PKG) $(PKG)/*.proto --go_out=plugins=grpc:$(PKG)
