@@ -1,7 +1,10 @@
 language: go
 go:
-  - "1.11"
+  - "1.12"
 
+env:
+  global:
+    - GO111MODULE=on
 matrix:
   include:
     - name: "Codegen Check"
