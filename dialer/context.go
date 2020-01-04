@@ -3,7 +3,7 @@ package dialer
 import (
 	"context"
 
-	"github.com/RTradeLtd/grpc/middleware"
+	"github.com/RTradeLtd/grpc/v2/middleware"
 
 	"google.golang.org/grpc/metadata"
 )

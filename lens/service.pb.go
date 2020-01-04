@@ -6,10 +6,12 @@ package service
 import (
 	context "context"
 	fmt "fmt"
-	request "github.com/RTradeLtd/grpc/lens/request"
-	response "github.com/RTradeLtd/grpc/lens/response"
+	request "github.com/RTradeLtd/grpc/v2/lens/request"
+	response "github.com/RTradeLtd/grpc/v2/lens/response"
 	proto "github.com/golang/protobuf/proto"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 	math "math"
 )
 
@@ -89,6 +91,17 @@ type IndexerAPIServer interface {
 	Index(context.Context, *request.Index) (*response.Index, error)
 	// Search is used to perform a configurable search against the Lens index
 	Search(context.Context, *request.Search) (*response.Results, error)
+}
+
+// UnimplementedIndexerAPIServer can be embedded to have forward compatible implementations.
+type UnimplementedIndexerAPIServer struct {
+}
+
+func (*UnimplementedIndexerAPIServer) Index(ctx context.Context, req *request.Index) (*response.Index, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Index not implemented")
+}
+func (*UnimplementedIndexerAPIServer) Search(ctx context.Context, req *request.Search) (*response.Results, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Search not implemented")
 }
 
 func RegisterIndexerAPIServer(s *grpc.Server, srv IndexerAPIServer) {

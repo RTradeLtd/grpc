@@ -8,6 +8,8 @@ import (
 	fmt "fmt"
 	proto "github.com/golang/protobuf/proto"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 	math "math"
 )
 
@@ -384,6 +386,26 @@ type ServiceServer interface {
 	PutPrivateKey(context.Context, *KeyPut) (*Response, error)
 	DeletePrivateKey(context.Context, *KeyDelete) (*Response, error)
 	ListPrivateKeys(context.Context, *KeyList) (*Response, error)
+}
+
+// UnimplementedServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedServiceServer struct {
+}
+
+func (*UnimplementedServiceServer) HasPrivateKey(ctx context.Context, req *KeyGet) (*Response, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method HasPrivateKey not implemented")
+}
+func (*UnimplementedServiceServer) GetPrivateKey(ctx context.Context, req *KeyGet) (*Response, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetPrivateKey not implemented")
+}
+func (*UnimplementedServiceServer) PutPrivateKey(ctx context.Context, req *KeyPut) (*Response, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PutPrivateKey not implemented")
+}
+func (*UnimplementedServiceServer) DeletePrivateKey(ctx context.Context, req *KeyDelete) (*Response, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeletePrivateKey not implemented")
+}
+func (*UnimplementedServiceServer) ListPrivateKeys(ctx context.Context, req *KeyList) (*Response, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListPrivateKeys not implemented")
 }
 
 func RegisterServiceServer(s *grpc.Server, srv ServiceServer) {
