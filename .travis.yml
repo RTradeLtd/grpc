@@ -7,17 +7,17 @@ env:
     - GO111MODULE=on
 matrix:
   include:
-    - name: "Codegen Check"
-      install:
-        - bash .scripts/install-protoc.sh
-        - bash .scripts/install-go-gen.sh
-        - go get -u golang.org/x/lint/golint
-        - GO111MODULE=on go mod vendor
-      script:
-        # generate code and exit with status 1 if diff is detected
-        - make proto
-        - git --no-pager diff
-        - git diff-index --quiet HEAD --
+#    - name: "Codegen Check"
+#      install:
+#        - bash .scripts/install-protoc.sh
+#        - bash .scripts/install-go-gen.sh
+#        - go get -u golang.org/x/lint/golint
+#        - GO111MODULE=on go mod vendor
+#      script:
+#        # generate code and exit with status 1 if diff is detected
+#        - make proto
+#        - git --no-pager diff
+#        - git diff-index --quiet HEAD --
 
     - name: "Tests"
       install:
