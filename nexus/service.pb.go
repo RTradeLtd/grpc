@@ -8,6 +8,8 @@ import (
 	fmt "fmt"
 	proto "github.com/golang/protobuf/proto"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 	math "math"
 )
 
@@ -405,6 +407,32 @@ type ServiceServer interface {
 	RemoveNetwork(context.Context, *NetworkRequest) (*Empty, error)
 	NetworkStats(context.Context, *NetworkRequest) (*NetworkStatusReponse, error)
 	NetworkDiagnostics(context.Context, *NetworkRequest) (*NetworkDiagnosticsResponse, error)
+}
+
+// UnimplementedServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedServiceServer struct {
+}
+
+func (*UnimplementedServiceServer) Ping(ctx context.Context, req *Empty) (*Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Ping not implemented")
+}
+func (*UnimplementedServiceServer) StartNetwork(ctx context.Context, req *NetworkRequest) (*StartNetworkResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method StartNetwork not implemented")
+}
+func (*UnimplementedServiceServer) UpdateNetwork(ctx context.Context, req *NetworkRequest) (*Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateNetwork not implemented")
+}
+func (*UnimplementedServiceServer) StopNetwork(ctx context.Context, req *NetworkRequest) (*Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method StopNetwork not implemented")
+}
+func (*UnimplementedServiceServer) RemoveNetwork(ctx context.Context, req *NetworkRequest) (*Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RemoveNetwork not implemented")
+}
+func (*UnimplementedServiceServer) NetworkStats(ctx context.Context, req *NetworkRequest) (*NetworkStatusReponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method NetworkStats not implemented")
+}
+func (*UnimplementedServiceServer) NetworkDiagnostics(ctx context.Context, req *NetworkRequest) (*NetworkDiagnosticsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method NetworkDiagnostics not implemented")
 }
 
 func RegisterServiceServer(s *grpc.Server, srv ServiceServer) {

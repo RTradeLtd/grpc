@@ -1,4 +1,4 @@
-module github.com/RTradeLtd/grpc
+module github.com/RTradeLtd/grpc/v2
 
 go 1.12
 

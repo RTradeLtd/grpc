@@ -8,6 +8,8 @@ import (
 	fmt "fmt"
 	proto "github.com/golang/protobuf/proto"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 	math "math"
 )
 
@@ -651,6 +653,20 @@ type LensV2Server interface {
 	Index(context.Context, *IndexReq) (*IndexResp, error)
 	Search(context.Context, *SearchReq) (*SearchResp, error)
 	Remove(context.Context, *RemoveReq) (*RemoveResp, error)
+}
+
+// UnimplementedLensV2Server can be embedded to have forward compatible implementations.
+type UnimplementedLensV2Server struct {
+}
+
+func (*UnimplementedLensV2Server) Index(ctx context.Context, req *IndexReq) (*IndexResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Index not implemented")
+}
+func (*UnimplementedLensV2Server) Search(ctx context.Context, req *SearchReq) (*SearchResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Search not implemented")
+}
+func (*UnimplementedLensV2Server) Remove(ctx context.Context, req *RemoveReq) (*RemoveResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Remove not implemented")
 }
 
 func RegisterLensV2Server(s *grpc.Server, srv LensV2Server) {

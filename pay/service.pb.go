@@ -6,10 +6,12 @@ package pay
 import (
 	context "context"
 	fmt "fmt"
-	request "github.com/RTradeLtd/grpc/pay/request"
-	response "github.com/RTradeLtd/grpc/pay/response"
+	request "github.com/RTradeLtd/grpc/v2/pay/request"
+	response "github.com/RTradeLtd/grpc/v2/pay/response"
 	proto "github.com/golang/protobuf/proto"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 	math "math"
 )
 
@@ -73,6 +75,14 @@ func (c *signerClient) GetSignedMessage(ctx context.Context, in *request.SignReq
 // SignerServer is the server API for Signer service.
 type SignerServer interface {
 	GetSignedMessage(context.Context, *request.SignRequest) (*response.SignResponse, error)
+}
+
+// UnimplementedSignerServer can be embedded to have forward compatible implementations.
+type UnimplementedSignerServer struct {
+}
+
+func (*UnimplementedSignerServer) GetSignedMessage(ctx context.Context, req *request.SignRequest) (*response.SignResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetSignedMessage not implemented")
 }
 
 func RegisterSignerServer(s *grpc.Server, srv SignerServer) {
