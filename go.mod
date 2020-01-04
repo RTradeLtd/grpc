@@ -1,6 +1,6 @@
 module github.com/RTradeLtd/grpc/v2
 
-go 1.12
+go 1.13
 
 require (
 	github.com/golang/protobuf v1.3.1
